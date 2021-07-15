@@ -35,6 +35,9 @@ export default function quotesReducer(state = initialState, action) {
     case "quotes/downvote": 
       return state.map(quoteObj => quoteObj.id === action.payload ? { ...quoteObj, downvotes: quoteObj.downvotes + 1 } : quoteObj);
 
+    case "quotes/remove":
+      return state.filter(quoteObj => quoteObj.id !== action.payload);
+
     default:
       return state;
   }

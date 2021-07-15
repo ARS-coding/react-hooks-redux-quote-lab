@@ -5,7 +5,7 @@ import QuoteCard from "./QuoteCard";
 function Quotes() {
 
   let quotes = useSelector(state => state.quotes);
-  console.log(quotes)
+  
   return (
     <div>
       <hr />
