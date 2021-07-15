@@ -4,16 +4,20 @@ import { addQuote } from "./quotesSlice";
 
 function QuoteForm() {
   const [formData, setFormData] = useState({
-    // set up a controlled form with internal state
-    // look at the form to determine what keys need to go here
+    quote: "",
+    author: ""
   });
 
   function handleChange(event) {
-    // Handle Updating Component State
-  }
+    console.log(event.target.id)
+    setFormData({
+      ...formData,
+      [event.target.id]: event.target.value
+    })
+  };
 
   function handleSubmit(event) {
-    // Handle Form Submit event default
+    event.preventDefault();
     // Create quote object from state
     // Pass quote object to action creator
     // Update component state to return to default state
@@ -33,8 +37,9 @@ function QuoteForm() {
                   <div className="col-md-5">
                     <textarea
                       className="form-control"
-                      id="content"
-                      value={formData.content}
+                      id="quote"
+                      value={formData.quote}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -48,6 +53,7 @@ function QuoteForm() {
                       type="text"
                       id="author"
                       value={formData.author}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
