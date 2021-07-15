@@ -13,6 +13,7 @@ function App() {
       </div>
       <hr />
       <QuoteForm />
+      <Quotes />
     </div>
   );
 }

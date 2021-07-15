@@ -7,7 +7,9 @@ function QuoteForm() {
   const dispatch = useDispatch();
   const initialFormData = {
     content: "",
-    author: ""
+    author: "",
+    upvotes: 0,
+    downvotes: 0
   }
   const [formData, setFormData] = useState(initialFormData);
   
