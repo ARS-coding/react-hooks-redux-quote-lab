@@ -3,6 +3,7 @@ import Quotes from "./features/quotes/Quotes";
 import QuoteForm from "./features/quotes/QuoteForm";
 
 function App() {
+
   return (
     <div className="container-fluid">
       <div

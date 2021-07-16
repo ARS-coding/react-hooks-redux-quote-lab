@@ -5,12 +5,13 @@ import { addQuote } from "./quotesSlice";
 
 function QuoteForm() {
   const dispatch = useDispatch();
+
   const initialFormData = {
     content: "",
     author: "",
-    upvotes: 0,
-    downvotes: 0
+    votes: 1
   }
+
   const [formData, setFormData] = useState(initialFormData);
   
   function handleChange(event) {
@@ -22,13 +23,11 @@ function QuoteForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(addQuote({...formData, id: uuid()}))
-    setFormData(initialFormData);
-
-    // Create quote object from state
-    // Pass quote object to action creator
-    // Update component state to return to default state
+    dispatch(addQuote({...formData, id: uuid()})) 
+    setFormData(initialFormData); // reset the form
   }
+
+  console.log(formData.content)
 
   return (
     <div className="container">

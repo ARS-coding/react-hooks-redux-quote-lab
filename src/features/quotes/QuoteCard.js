@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { removeQuote, upvoteQuote, downvoteQuote } from "./quotesSlice";
 
+
 function QuoteCard(props) {
   
   const dispatch = useDispatch();
@@ -15,20 +16,19 @@ function QuoteCard(props) {
   }
 
   function handleRemoveButtonClick(event) {
+    // console.log("id", event.target.id)
     dispatch(removeQuote(event.target.id));
-
   }
 
   return (
-    // asdj
     <div>
       <div className="card card-inverse card-success card-primary mb-3 text-center">
         <div className="card-block">
           <blockquote className="card-blockquote">
-            <p>{props.quoteObj.content}</p>
+            <p>{props.quote.content}</p>
             <footer>
               - author{" "}
-              <cite title="Source Title">{props.quoteObj.author}</cite>
+              <cite title="Source Title">{props.quote.author}</cite>
             </footer>
           </blockquote>
         </div>
@@ -38,17 +38,18 @@ function QuoteCard(props) {
             role="group"
             aria-label="Basic example"
           >
-            <button type="button" className="btn btn-primary" onClick={handleUpvoteClick} id={props.quoteObj.id}>
+            <button type="button" className="btn btn-primary" onClick={handleUpvoteClick} id={props.quote.id}>
               Upvote
             </button>
-            <button type="button" className="btn btn-secondary" onClick={handleDownvoteClick} id={props.quoteObj.id}>
+            <button type="button" className="btn btn-secondary" onClick={handleDownvoteClick} id={props.quote.id}>
               Downvote
             </button>
-            <button type="button" className="btn btn-danger" onClick={handleRemoveButtonClick} id={props.quoteObj.id}>
-              <span aria-hidden="true">&times;</span>
+            <button type="button" className="btn btn-danger" onClick={handleRemoveButtonClick} id={props.quote.id}>
+              {/* <span aria-hidden="true">&times;</span> */}
+              &times;
             </button>
           </div>
-          <div>Votes: <br/> Downvotes: {props.quoteObj.downvotes} | upvotes: {props.quoteObj.upvotes}</div>
+          <div>Votes: {props.quote.votes}</div>
         </div>
       </div>
     </div>
