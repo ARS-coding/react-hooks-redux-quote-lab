@@ -32,9 +32,12 @@ export default function quotesReducer(state = initialState, action) {
       return state.map(quoteObj => quoteObj.id === action.payload ? { ...quoteObj, votes: quoteObj.votes +=1 } : quoteObj);
 
     case "quotes/downvote":
-      const downvotedQuote = state.find(quoteObj => quoteObj.id === action.payload)
-      if (downvotedQuote.votes === 0) return state;
-      return state.map(quoteObj => quoteObj.id === action.payload ? { ...quoteObj, votes: quoteObj.votes -= 1 } : quoteObj);
+      return state.map(quote => (quote.id === action.payload && quote.votes > 0) ? { ...quote, votes: quote.votes - 1 } : quote);
+        
+
+      // const downvotedQuote = state.find(quoteObj => quoteObj.id === action.payload)
+      // if (downvotedQuote.votes === 0) return state;
+      // return state.map(quoteObj => quoteObj.id === action.payload ? { ...quoteObj, votes: quoteObj.votes -= 1 } : quoteObj);
 
     default:
       return state;

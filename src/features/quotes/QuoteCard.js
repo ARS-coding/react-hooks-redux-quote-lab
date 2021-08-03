@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { removeQuote, upvoteQuote, downvoteQuote } from "./quotesSlice";
 
 
 function QuoteCard(props) {
@@ -7,15 +8,15 @@ function QuoteCard(props) {
   const dispatch = useDispatch();
 
   function handleUpvoteClick(event) {
-    dispatch(props.upvoteQuote(event.target.id));
+    dispatch(upvoteQuote(event.target.id));
   }
 
   function handleDownvoteClick(event) {
-    dispatch(props.downvoteQuote(event.target.id));
+    dispatch(downvoteQuote(event.target.id));
   }
 
   function handleRemoveButtonClick(event) {
-    dispatch(props.removeQuote(event.target.id));
+    dispatch(removeQuote(event.target.id));
   }
 
   return (
