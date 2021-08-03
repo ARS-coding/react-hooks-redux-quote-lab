@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import QuoteCard from "./QuoteCard";
+import { removeQuote, upvoteQuote, downvoteQuote } from "./quotesSlice";
+
 
 function Quotes() {
 
@@ -20,6 +22,9 @@ function Quotes() {
               <QuoteCard 
                 key={quoteObj.id} 
                 quote={quoteObj}
+                removeQuote={removeQuote}
+                upvoteQuote={upvoteQuote}
+                downvoteQuote={downvoteQuote}
               />
             ))}
             {/*
